@@ -1,3 +1,4 @@
+
 /* Global reset & box sizing */
 * {
   box-sizing: border-box;
@@ -40,7 +41,7 @@ h1 {
   margin-right: 15px;
 }
 
-/* Date‐picker & button row */
+/* Date-picker & button row */
 .filters {
   display: flex;
   flex-direction: column;
@@ -70,6 +71,7 @@ button {
   color: black;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #bfbfbf;
 }
@@ -80,7 +82,7 @@ button:hover {
     flex-direction: row;
     padding: 0;
   }
-  
+
   input[type="date"],
   button {
     width: auto;
@@ -108,6 +110,20 @@ button:hover {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
+  /* Make gallery cards feel clickable */
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* Slight zoom when hovering over an image card */
+.gallery-item:hover {
+  transform: scale(1.02);
+}
+
+/* Highlight cards when using the keyboard */
+.gallery-item:focus-visible {
+  outline: 3px solid #0b3d91;
 }
 
 /* Three columns on wider screens */
@@ -141,4 +157,167 @@ button:hover {
 .placeholder-icon {
   font-size: 48px;
   margin-bottom: 20px;
+}
+
+
+/* ==================================================
+   NASA IMAGE MODAL
+   ================================================== */
+
+/* Dark background behind the popup */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+/* Keep the popup hidden until an image is clicked */
+.modal[hidden] {
+  display: none;
+}
+
+/* White popup container */
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Display a larger version of the NASA image */
+.modal-content img {
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+/* Image title */
+.modal-content h2 {
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+/* Image date */
+#modalDate {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* NASA's full explanation */
+#modalExplanation {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  overflow-wrap: anywhere;
+}
+
+#modalExplanation p {
+  margin-bottom: 12px;
+}
+
+/* Popup close button */
+.modal-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background-color: #c75146;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 26px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* Darker red when hovering over close button */
+.modal-close:hover {
+  background-color: #a83232;
+}
+
+/* Stop background scrolling when popup is open */
+body.modal-open {
+  overflow: hidden;
+
+
+  
+/* =========================================
+   EXTRA CREDIT: RANDOM SPACE FACT
+   ========================================= */
+
+.space-fact {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  padding: 20px;
+  background-color: white;
+  border-left: 5px solid #0b3d91;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.space-fact h2 {
+  color: #0b3d91;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.space-fact p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   EXTRA CREDIT: NASA VIDEO ENTRIES
+   ========================================= */
+
+/* Video placeholder */
+.video-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #071633, #0b3d91);
+  color: white;
+  font-size: 23px;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Video link */
+.video-item a {
+  display: inline-block;
+  margin: 15px 5px;
+  padding: 10px 15px;
+  background-color: #0b3d91;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Video link hover */
+.video-item a:hover {
+  background-color: #105bd8;
+}
+
+/* Video cards use the link instead of a card click */
+.video-item {
+  cursor: default;
+}
+
 }
